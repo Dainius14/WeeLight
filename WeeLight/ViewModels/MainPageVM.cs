@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using WeeLight.Models;
 using YeelightAPI;
@@ -31,7 +32,6 @@ namespace WeeLight.ViewModels
         }
 
         private bool _noDevicesFound;
-
         public bool NoDevicesFound
         {
             get => _noDevicesFound;
@@ -43,6 +43,7 @@ namespace WeeLight.ViewModels
         public MainPageVM()
         {
             DiscoverDevices();
+
         }
 
         public void OnPowerToggle(bool value)
@@ -82,6 +83,19 @@ namespace WeeLight.ViewModels
             {
                 SelectedDevice = new DeviceVM(yeeDevice);
                 SelectedDeviceIndex = Devices.IndexOf(yeeDevice);
+            }
+            else
+            {
+                SelectedDevice = null;
+                SelectedDeviceIndex = -1;
+            }
+        }
+
+        public void OnWindowActivated()
+        {
+            foreach (var device in Devices)
+            {
+                device.Connect();
             }
         }
     }

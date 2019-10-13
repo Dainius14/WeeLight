@@ -13,6 +13,7 @@
     <Page.Resources>
         <c:BoolNegationConverter x:Key="BoolNegationConverter"/>
         <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <c:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter"/>
 
         <ControlTemplate x:Key="TemperatureColorButtonTemplate" TargetType="Button">
             <Grid>
@@ -139,7 +140,7 @@
             <StackPanel
                 x:Name="Content"
                 Orientation="Vertical"
-                Visibility="{x:Bind VM.IsDeviceListLoading, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=true}"
+                Visibility="{x:Bind VM.SelectedDevice, Mode=OneWay, Converter={StaticResource ObjectToVisibilityConverter}}"
                 >
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                            Text="{x:Bind VM.SelectedDevice.Name, Mode=OneWay}"/>

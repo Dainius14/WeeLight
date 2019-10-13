@@ -89,8 +89,6 @@ namespace WeeLight.ViewModels
                     PredefinedColors.Add(c);
                 }
             }
-
-
         }
     }
 }

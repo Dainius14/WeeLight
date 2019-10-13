@@ -129,6 +129,7 @@ namespace WeeLight.Models
                 }
             }
         }
+
         private void SetDynamicProperties()
         {
             _brightness = Convert.ToInt32(_device[YeelightAPI.Models.PROPERTIES.bright]);
@@ -143,6 +144,11 @@ namespace WeeLight.Models
             {
                 _temperature = Convert.ToInt32(_device[YeelightAPI.Models.PROPERTIES.ct]);
             }
+        }
+
+        public void Connect()
+        {
+            _device.Connect();
         }
     }
 }

@@ -22,6 +22,13 @@ namespace WeeLight.Views
             VM = new MainPageVM();
 
             VM.PropertyChanged += VM_PropertyChanged;
+
+            Window.Current.Activated += Window_Activated;
+        }
+
+        private void Window_Activated(object sender, WindowActivatedEventArgs e)
+        {
+            VM.OnWindowActivated();
         }
 
         private void VM_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -29,14 +36,17 @@ namespace WeeLight.Views
             switch (e.PropertyName)
             {
                 case nameof(VM.SelectedDevice):
-                    if (VM.SelectedDevice.CanSetTemperature)
+                    if (VM.SelectedDevice != null)
                     {
-                        CreateTemperatureButtons();
-                    }
+                        if (VM.SelectedDevice.CanSetTemperature)
+                        {
+                            CreateTemperatureButtons();
+                        }
 
-                    if (VM.SelectedDevice.CanSetRGBColor)
-                    {
-                        CreateColorButtons();
+                        if (VM.SelectedDevice.CanSetRGBColor)
+                        {
+                            CreateColorButtons();
+                        }
                     }
                     break;
             }
