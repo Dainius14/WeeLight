@@ -8,7 +8,7 @@
 
   <Identity
     Name="af7d3dff-bf1c-47c3-842f-0f709ddec9ed"
-    Publisher="CN=daini"
+    Publisher="CN=Dainius Daukševičius"
     Version="0.1.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="af7d3dff-bf1c-47c3-842f-0f709ddec9ed" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
