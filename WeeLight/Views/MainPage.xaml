@@ -47,7 +47,7 @@
 
                 <TextBlock
                     Text="{x:Bind Name}"
-                    Margin="16,0,0,0"
+                    Margin="12,0,0,0"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Stretch"
                     />
@@ -70,14 +70,13 @@
                 
                 <TextBlock
                     Text="Devices"
-                    Margin="50,12,0,0"
+                    Margin="44,12"
                     Style="{StaticResource BaseTextBlockStyle}"
                     />
                 
                 <ListView
                     x:Name="DeviceList"
                     Grid.Row="1"
-                    Margin="0,12,0,0"
                     SelectionMode="Single"
                     IsItemClickEnabled="True"
                     VerticalAlignment="Stretch"
@@ -94,7 +93,6 @@
                     SelectionMode="None"
                     VerticalAlignment="Stretch"
                     Visibility="{x:Bind VM.NoDevicesFound, Mode=OneWay}"
-                    Margin="2,0,0,0"
                     >
                     <StackPanel Orientation="Horizontal" AutomationProperties.Name="{x:Bind Name}">
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE783;"/>
@@ -116,23 +114,23 @@
                 <ListView
                     x:Name="TopLevelNavBottom"
                     Grid.Row="2"
-                    Margin="0,0,0,12"
+                    Margin="0,12"
                     SelectionMode="None"
                     VerticalAlignment="Stretch"
                     IsItemClickEnabled="True"
                     ItemClick="TopLevelNavBottom_ItemClick"
                     IsEnabled="{x:Bind VM.IsDeviceListLoading, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}"
                     >
-                    <StackPanel x:Name="RefreshDevicesButton" Orientation="Horizontal" Margin="2,0,0,0">
+                    <StackPanel x:Name="RefreshDevicesButton" Orientation="Horizontal">
                         <SymbolIcon Symbol="Refresh"/>
-                        <TextBlock Text="Refresh Devices" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="Refresh Devices" Margin="12,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </ListView>
             </Grid>
 
         </SplitView.Pane>
 
-        <Grid Margin="12,12">
+        <Grid Padding="12">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -150,8 +148,6 @@
                     x:Name="DevicePowerSwitch"
                     Header="Power"
                     IsOn="{x:Bind VM.SelectedDevice.IsPowerOn, Mode=TwoWay}"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
                     AllowDrop="True"/>
 
 
@@ -159,9 +155,7 @@
                 <Slider
                     x:Name="BrightnessSlider"
                     Header="Brightness"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Width="290" 
+                    HorizontalAlignment="Stretch"
                     Minimum="0"
                     Maximum="100"
                     StepFrequency="10"
