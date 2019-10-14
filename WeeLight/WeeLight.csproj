@@ -214,7 +214,7 @@
       <Version>6.2.9</Version>
     </PackageReference>
     <PackageReference Include="YeelightAPI">
-      <Version>1.5.1</Version>
+      <Version>1.5.2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />

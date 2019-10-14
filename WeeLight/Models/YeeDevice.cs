@@ -117,7 +117,7 @@ namespace WeeLight.Models
                 {
                     case YeelightAPI.Models.MODEL.Ceiling:
                     case YeelightAPI.Models.MODEL.DeskLamp:
-                    case YeelightAPI.Models.MODEL.Unknown:  // TODO change to ct_bulb when API is updated
+                    case YeelightAPI.Models.MODEL.TunableWhiteBulb:
                         MinTemperature = 2700;
                         MaxTemperature = 6500;
                         break;
