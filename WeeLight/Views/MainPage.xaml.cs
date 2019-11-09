@@ -38,6 +38,7 @@ namespace WeeLight.Views
                 case nameof(VM.SelectedDevice):
                     if (VM.SelectedDevice != null)
                     {
+                        VM.SelectedDevice.PropertyChanged += SelectedDeviceVMPropertyChanges;
                         if (VM.SelectedDevice.CanSetTemperature)
                         {
                             CreateTemperatureButtons();
@@ -46,6 +47,29 @@ namespace WeeLight.Views
                         if (VM.SelectedDevice.CanSetRGBColor)
                         {
                             CreateColorButtons();
+                        }
+                    }
+                    break;
+            }
+        }
+        private void SelectedDeviceVMPropertyChanges(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(VM.SelectedDevice.IsPowerOn):
+                    if (VM.SelectedDevice.CanSetTemperature)
+                    {
+                        foreach (Button button in TemperatureButtons.Children)
+                        {
+                            button.IsEnabled = VM.SelectedDevice.IsPowerOn;
+                        }
+                    }
+
+                    if (VM.SelectedDevice.CanSetRGBColor)
+                    {
+                        foreach (Button button in ColorButtons.Children)
+                        {
+                            button.IsEnabled = VM.SelectedDevice.IsPowerOn;
                         }
                     }
                     break;
